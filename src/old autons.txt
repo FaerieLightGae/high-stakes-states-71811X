@@ -1,0 +1,280 @@
+
+//skills
+  void skills() {
+    //initializing odom
+      chassis.pid_targets_reset();
+      chassis.drive_imu_reset();
+      chassis.drive_sensor_reset();
+      chassis.odom_enable(true);
+      chassis.odom_xyt_set(0, 8, 0);
+      chassis.drive_brake_set(MOTOR_BRAKE_HOLD);
+
+    //score red alliance
+      chassis.pid_drive_set(3.5, 60);
+      chassis.pid_wait();
+      set_intake_blank(127);
+      pros::delay(250);
+      chassis.pid_drive_set(12, 90);
+      chassis.pid_wait();
+      set_intake_blank(0);
+
+      chassis.pid_turn_set(-90, 90);
+      chassis.pid_wait();
+
+      chassis.pid_drive_set(-24, 60, true);
+      chassis.pid_wait();
+      ClampPiston.set(1);
+
+      chassis.pid_turn_set(0, 90), true;
+      chassis.pid_wait();
+      set_intake_blank(127);
+
+      chassis.pid_drive_set(25, 90);
+      chassis.pid_wait();
+
+      chassis.pid_turn_set(-45, 90);
+      chassis.pid_wait();
+
+      chassis.pid_drive_set(32 , 90);
+      pros::delay(250);
+      set_intake_blank(0);
+      pros::delay(100);
+      set_intake_blank(127);
+      chassis.pid_wait();
+
+  }
+
+
+//red
+  void RedRingRush() {
+    //initializing odom
+      chassis.pid_targets_reset();
+      chassis.drive_imu_reset();
+      chassis.drive_sensor_reset();
+      chassis.odom_enable(false);
+      chassis.drive_brake_set(MOTOR_BRAKE_HOLD);
+      chassis.drive_angle_set(-14);
+      set_color(false);
+
+    //mid ring rush
+      intake1.move(127);
+      chassis.pid_drive_set(48, 110, false);
+      chassis.pid_wait_quick_chain();
+      pros::delay(500);
+
+    //clamp
+      chassis.pid_swing_set(LEFT_SWING, -50, 110, 0);
+      chassis.pid_wait();
+
+      chassis.pid_drive_set(-20, 90, true);
+      chassis.pid_wait();
+      pros::delay(250);
+      ClampPiston.set(1);
+      intake2.move(110);
+
+    //score safe ring
+      chassis.pid_turn_set(-90, 100);
+      chassis.pid_wait();
+
+      chassis.pid_drive_set(29, 100);
+      chassis.pid_wait();
+
+    //score other mid ring
+      chassis.pid_turn_set(0, 100);
+      chassis.pid_wait();
+
+      chassis.pid_drive_set(17, 110);
+      chassis.pid_wait();
+      pros::delay(500);
+
+    //cross
+      chassis.pid_drive_set(-40, 100);
+      chassis.pid_wait();
+
+      chassis.pid_turn_set(90, 90);
+      chassis.pid_wait();
+      intake1.move(-127);
+
+      chassis.pid_drive_set(60, 110);
+      chassis.pid_wait();
+  }
+
+  void LeftAWP() {
+    //initializing odom
+      chassis.pid_targets_reset();
+      chassis.drive_imu_reset();
+      chassis.drive_sensor_reset();
+      chassis.odom_enable(false);
+      chassis.drive_brake_set(MOTOR_BRAKE_HOLD);
+      chassis.drive_angle_set(90);
+      ladybrown_auton_set(2);
+
+    //score on alliance
+      chassis.pid_turn_set(130, 110);
+      chassis.pid_wait();
+      pros::delay(250);
+
+      chassis.pid_drive_set(8.5, 110);
+      chassis.pid_wait();
+      ladybrown_alliance();
+      pros::delay(750);
+
+    //clamp
+      chassis.pid_drive_set(-20, 110);
+      chassis.pid_wait_quick_chain();
+
+      ladybrown_score();
+      chassis.pid_turn_set(90, 110);
+      chassis.pid_wait();
+      intake1.move(127);
+      intake2.move(110);
+
+      chassis.pid_drive_set(50, 60);
+      chassis.pid_wait_until(45);
+      intake2.move(0);
+      chassis.pid_wait();
+      //pros::delay(250);
+
+      chassis.pid_drive_set(-40, 110);
+      chassis.pid_wait();
+
+      chassis.pid_turn_set(160, 110);
+      chassis.pid_wait();
+
+      chassis.pid_drive_set(-30, 110);
+      chassis.pid_wait();
+      ClampPiston.set(1);
+
+      chassis.pid_turn_set(260, 110);
+      chassis.pid_wait();
+      intake2.move(110);
+      
+      chassis.pid_drive_set(28, 110);
+      chassis.pid_wait();
+      //pros::delay(250);
+
+      chassis.pid_turn_set(90, 110);
+      chassis.pid_wait();
+      chassis.drive_brake_set(MOTOR_BRAKE_COAST);
+
+      chassis.pid_drive_set(40, 127);
+      chassis.pid_wait();
+  }
+
+  void RightAWP() {
+    //initializing odom
+      chassis.pid_targets_reset();
+      chassis.drive_imu_reset();
+      chassis.drive_sensor_reset();
+      chassis.odom_enable(false);
+      chassis.drive_brake_set(MOTOR_BRAKE_HOLD);
+      chassis.drive_angle_set(-90);
+      ladybrown_auton_set(2);
+
+    //score on alliance
+      chassis.pid_turn_set(-130, 110);
+      chassis.pid_wait();
+      pros::delay(250);
+
+      chassis.pid_drive_set(8.5, 110);
+      chassis.pid_wait();
+      ladybrown_alliance();
+      pros::delay(750);
+
+    //clamp
+      chassis.pid_drive_set(-20, 110);
+      chassis.pid_wait_quick_chain();
+
+      ladybrown_score();
+      chassis.pid_turn_set(-90, 110);
+      chassis.pid_wait();
+      intake1.move(127);
+      intake2.move(110);
+
+      chassis.pid_drive_set(50, 60);
+      chassis.pid_wait_until(45);
+      intake2.move(0);
+      chassis.pid_wait();
+      //pros::delay(250);
+
+      chassis.pid_drive_set(-40, 110);
+      chassis.pid_wait();
+
+      chassis.pid_turn_set(-160, 110);
+      chassis.pid_wait();
+
+      chassis.pid_drive_set(-30, 110);
+      chassis.pid_wait();
+      ClampPiston.set(1);
+
+      chassis.pid_turn_set(-260, 110);
+      chassis.pid_wait();
+      intake2.move(110);
+      
+      chassis.pid_drive_set(28, 110);
+      chassis.pid_wait();
+      //pros::delay(250);
+
+      chassis.pid_turn_set(-90, 110);
+      chassis.pid_wait();
+      chassis.drive_brake_set(MOTOR_BRAKE_COAST);
+
+      chassis.pid_drive_set(40, 127);
+      chassis.pid_wait();
+  }
+
+//blue
+  void BlueRingRush() {
+    //initializing odom
+      chassis.pid_targets_reset();
+      chassis.drive_imu_reset();
+      chassis.drive_sensor_reset();
+      chassis.odom_enable(false);
+      chassis.drive_brake_set(MOTOR_BRAKE_HOLD);
+      chassis.drive_angle_set(14);
+      set_color(true);
+
+    //mid ring rush
+      intake1.move(127);
+      chassis.pid_drive_set(48, 110, false);
+      chassis.pid_wait_quick_chain();
+      pros::delay(500);
+
+    //clamp
+      chassis.pid_swing_set(RIGHT_SWING, 50, 110, 0);
+      chassis.pid_wait();
+
+      chassis.pid_drive_set(-20, 90, true);
+      chassis.pid_wait();
+      pros::delay(250);
+      ClampPiston.set(1);
+      intake2.move(110);
+
+    //score safe ring
+      chassis.pid_turn_set(90, 100);
+      chassis.pid_wait();
+
+      chassis.pid_drive_set(29, 100);
+      chassis.pid_wait();
+
+    //score other mid ring
+      chassis.pid_turn_set(0, 100);
+      chassis.pid_wait();
+
+      chassis.pid_drive_set(17, 110);
+      chassis.pid_wait();
+      pros::delay(500);
+
+    //cross
+      chassis.pid_drive_set(-40, 100);
+      chassis.pid_wait();
+
+      chassis.pid_turn_set(-90, 90);
+      chassis.pid_wait();
+      intake1.move(-127);
+
+      chassis.pid_drive_set(60, 110);
+      chassis.pid_wait();
+
+
+    }
