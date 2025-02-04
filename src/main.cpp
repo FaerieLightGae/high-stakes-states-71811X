@@ -59,6 +59,7 @@ void initialize() {
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
       {"Skills Auton\n\n71811X | X-Quisite", skills},
+
       {"Solo AWP Red\n\n10 Points | 4 Rings | Ladder\n\n71811X | X-Quisite", RedSAWP},
       {"Positive Red Alliance Middle\n\n7 Points | 3 Rings | Middle\n\n71811X | X-Quisite", RedPositiveAllianceMiddle},
       {"Positive Red Alliance Ladder\n\n7 Points | 3 Rings | Ladder\n\n71811X | X-Quisite", RedPositiveAllianceLadder},
