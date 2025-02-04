@@ -99,7 +99,7 @@ void Intake1Control(int input) {
 
 void IntakeBlue() {
     optical_sensor.set_led_pwm(100);
-/*
+
         if ((rejectring == true) && !master.get_digital(DIGITAL_B) && (blockExtras == false)) {
             intake1.move(BlueIntakeSpeed);
             if (intake2.get_torque() >= 0.75) {
@@ -120,7 +120,7 @@ void IntakeBlue() {
             intake1.move(BlueIntakeSpeed);
             intake2.move(BlueIntakeSpeed);
         }
-        pros::delay(ez::util::DELAY_TIME); */
+        pros::delay(ez::util::DELAY_TIME);
 }
 
 void IntakeRed() {
