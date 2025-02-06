@@ -1784,19 +1784,19 @@ void measure_offsets() {
         ladybrown_down();
         chassis.pid_wait_quick_chain();
 
-        chassis.pid_drive_set(-20, 60);
+        chassis.pid_drive_set(-20, 90);
         chassis.pid_wait();
         ClampPiston.set(1);
 
       //score ring 1-1
         chassis.pid_turn_set(0, 110);
         chassis.pid_wait();
-        set_intake_blank(127);
+        set_intake_blank(110);
 
-        chassis.pid_drive_set(32, 80);
+        chassis.pid_drive_set(31, 90);
         chassis.pid_wait_quick();
 
-      //score ring 1-2,2 & w-1
+      //intake & score wallstake ring
         chassis.pid_turn_set(45, 110);
         chassis.pid_wait_quick_chain();
 
@@ -1806,64 +1806,159 @@ void measure_offsets() {
         chassis.pid_turn_set(0, 110);
         chassis.pid_wait_quick_chain();
 
-        chassis.pid_drive_set(25, 60);
-        chassis.pid_wait();
-        pros::delay(250);
-
-        chassis.pid_turn_set(25, 110);
-        chassis.pid_wait_quick_chain();
-        ladybrown.move_absolute(230, 1000);
-        intake2.move(80);
-
-        chassis.pid_drive_set(20, 80);
-        chassis.pid_wait();
-
-      //do right side wall stakes
-        chassis.pid_turn_set(15, 110);
-        chassis.pid_wait_quick_chain();
-
-        chassis.pid_drive_set(-36.5, 110);
-        chassis.pid_wait_quick_chain();
-        intake2.move(0);
-
-        chassis.pid_turn_set(88, 110);
-        chassis.pid_wait_quick_chain();
-        intake2.move(127);
-
-        chassis.pid_drive_set(17, 80, false, true);
-        chassis.pid_wait();
-
-        chassis.pid_drive_set(-2, 30);
-        set_intake_blank(0);
-        ladybrown.move_absolute(5.5*360, 1000);
-        pros::delay(750);
-        chassis.pid_wait();
-        chassis.pid_drive_set(3, 60);
+        chassis.pid_drive_set(34, 80);
         ladybrown_prime();
-        pros::delay(1000);
-        set_intake_blank(127);
-        pros::delay(750);
-        intake2.move(0);
-        pros::delay(250);
-        intake2.move(127);
-        pros::delay(250);
-        chassis.pid_wait();
-        chassis.pid_drive_set(-2, 30);
-        set_intake_blank(0);
-        ladybrown_score();
+        intake2.move(60);
         chassis.pid_wait();
         pros::delay(500);
 
+        chassis.pid_drive_set(-20, 110);
+        chassis.pid_wait_quick_chain();
+
+        intake2.move(0);
+        chassis.pid_swing_set(RIGHT_SWING, 88, 110);
+        chassis.pid_wait_quick_chain();
+
+        chassis.pid_drive_set(18, 50, false, true);
+        intake2.move(127);
+        chassis.pid_wait();
+
+        set_intake_blank(0);
+        ladybrown_score();
+        pros::delay(1000);
+        set_intake_blank(110);
 
       //score rings 1-3,4,5,6
-        chassis.pid_drive_set(-4, 110);
-        ladybrown_down();
+        chassis.pid_drive_set(-10, 80);
+        chassis.pid_wait_quick_chain();
+        ladybrown.move_absolute(4*360, 1000);
+        pros::delay(250);
+
+        chassis.pid_turn_set(175, 110);
+        chassis.pid_wait_quick_chain();
+
+        chassis.pid_drive_set(30, 80);
+        chassis.pid_wait_quick_chain();
+        chassis.pid_drive_set(30, 50);
+        chassis.pid_wait();
+        pros::delay(500);
+
+        chassis.pid_drive_set(-10, 110);
+        chassis.pid_wait_quick_chain();
+
+        chassis.pid_turn_set(90, 110);
+        chassis.pid_wait_quick_chain();
+
+        chassis.pid_drive_set(12, 50);
+        chassis.pid_wait();
+        pros::delay(250);
+
+      //drop mogo
+        chassis.pid_swing_set(LEFT_SWING, -45, 110, -30);
+        chassis.pid_wait_quick_chain();
+
+        chassis.pid_drive_set(-13, 110);
+        chassis.pid_wait();
+        set_intake_blank(-127);
+        ClampPiston.set(0);
+        pros::delay(250);
+
+      //mogo 2
+        chassis.pid_drive_set(5, 110);
+        chassis.pid_wait_quick_chain();
+
+        chassis.pid_turn_set(88, 110);
+        chassis.pid_wait();
+
+      //TUNE HERE
+        chassis.pid_drive_set(-48, 110);
+        chassis.pid_wait();
+        chassis.pid_turn_set(88, 90);
+        chassis.pid_wait();
+
+        chassis.pid_drive_set(-20, 90);
+        chassis.pid_wait();
+        ClampPiston.set(1);
+
+      //score ring 2-1
+        chassis.pid_turn_set(0, 110);
+        chassis.pid_wait();
+        set_intake_blank(110);
+
+        chassis.pid_drive_set(31, 90);
+        chassis.pid_wait_quick();
+
+      //intake & score wallstake ring
+        chassis.pid_turn_set(-45, 110);
+        chassis.pid_wait_quick_chain();
+
+        chassis.pid_drive_set(26, 110);
+        chassis.pid_wait_quick_chain();
+
+        chassis.pid_turn_set(0, 110);
+        chassis.pid_wait_quick_chain();
+
+        chassis.pid_drive_set(33, 80);
+        chassis.pid_wait();
+        pros::delay(500);
+
+        chassis.pid_drive_set(-12, 110);
         chassis.pid_wait_quick_chain();
 
         chassis.pid_turn_set(180, 110);
         chassis.pid_wait_quick_chain();
-        set_intake_blank(0);
 
+
+      //score rings 2-3,4,5,6
         chassis.pid_drive_set(50, 90);
+        chassis.pid_wait_quick_chain();
+        chassis.pid_drive_set(37, 50);
         chassis.pid_wait();
+        pros::delay(500);
+
+        chassis.pid_drive_set(-10, 110);
+        chassis.pid_wait_quick_chain();
+
+        chassis.pid_turn_set(-90, 110);
+        chassis.pid_wait_quick_chain();
+
+        chassis.pid_drive_set(12, 50);
+        chassis.pid_wait();
+        pros::delay(250);
+
+      //drop mogo
+        chassis.pid_swing_set(RIGHT_SWING, 45, 110, -30);
+        chassis.pid_wait_quick_chain();
+
+        chassis.pid_drive_set(-11, 110);
+        chassis.pid_wait();
+        set_intake_blank(-127);
+        ClampPiston.set(0);
+        pros::delay(250);
+
+        chassis.pid_drive_set(8, 110);
+        chassis.pid_wait_quick_chain();
+
+        chassis.pid_turn_set(0, 110);
+        chassis.pid_wait_quick_chain();
+
+        chassis.pid_drive_set(64, 110);
+        chassis.pid_wait_quick_chain();
+
+        chassis.pid_turn_set(45, 110);
+        chassis.pid_wait_quick_chain();
+        set_intake_blank(127);
+        intake2.brake();
+
+        chassis.pid_drive_set(30, 90);
+        chassis.pid_wait();
+        pros::delay(250);
+
+        chassis.pid_turn_set(-135, 110);
+        chassis.pid_wait_quick_chain();
+
+        chassis.pid_drive_set(-20, 90);
+        chassis.pid_wait();
+        ClampPiston.set(1);
+        pros::delay(150);
     }
